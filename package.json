@@ -1,0 +1,27 @@
+{
+  "name": "superfetch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "superfetch",
+    "xhr",
+    "http",
+    "ajax",
+    "promise",
+    "node",
+    "fetch"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  }
+}
+
