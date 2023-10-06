@@ -2,11 +2,17 @@
   "name": "superfetch",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.js",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "lint": "tsc"
   },
   "keywords": [
     "superfetch",
@@ -19,8 +25,12 @@
   ],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@changesets/cli": "^2.26.2"
+  },
   "devDependencies": {
     "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
 }
