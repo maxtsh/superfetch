@@ -18,7 +18,7 @@ export type SuperFetchConfigs = {
   defaultResInterceptors?: InterceptorResponseFn[];
 };
 
-let signalTimeoutId: ReturnType<typeof setTimeout> | null = null;
+let signalTimeoutId: ReturnType<typeof setTimeout> | number | null = null;
 
 class SuperFetch {
   defaultConfigs: SuperFetchConfigs = { timeout: 150000 };
