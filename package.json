@@ -7,6 +7,7 @@
   "types": "dist/index.d.js",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsup --watch",
