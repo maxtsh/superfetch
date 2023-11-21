@@ -31,6 +31,8 @@ class SuperFetch {
   constructor(defaultSuperFetchConfigs: SuperFetchConfigs = {}) {
     if (!this.baseFetch) throw new Error("Fetch API is not available!");
 
+    this.baseFetch = this.baseFetch.bind(globalThis);
+
     this.defaultConfigs = defaultSuperFetchConfigs;
 
     this.loadDefaultInterceptors({
