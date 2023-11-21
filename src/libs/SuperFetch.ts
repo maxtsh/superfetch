@@ -9,7 +9,10 @@ export type RequestConfig = {
 export type InterceptorRequestFn = (
   requestConfig: RequestConfig,
 ) => RequestConfig;
-export type InterceptorResponseFn = (response: Response) => Response;
+export type InterceptorResponseFn = (
+  response: Promise<Response>,
+  reqConfig: RequestConfig,
+) => Promise<{ response: Promise<Response>; config: RequestConfig }>;
 
 export type SuperFetchConfigs = Partial<{
   timeout: number;
@@ -64,10 +67,14 @@ class SuperFetch {
   }
 
   private createRequestURL(url: URLType) {
-    const newurl = this.defaultConfig?.baseURL
-      ? this.defaultConfig.baseURL + url
-      : url;
-    return newurl;
+    let newURL = url.toString();
+    if (
+      this.defaultConfig?.baseURL &&
+      !newURL.startsWith(this.defaultConfig.baseURL)
+    ) {
+      newURL = this.defaultConfig.baseURL + newURL;
+    }
+    return newURL;
   }
 
   private timeoutController() {
@@ -103,7 +110,7 @@ class SuperFetch {
       });
     }
 
-    let response = await this.baseFetch(requestConfig.url, {
+    let response = this.baseFetch(requestConfig.url, {
       ...requestConfig,
       signal: !requestConfig?.signal
         ? this.timeoutController().signal
@@ -113,8 +120,13 @@ class SuperFetch {
     if (signalTimeoutId) clearTimeout(signalTimeoutId);
 
     if (resInterceptors.length > 0) {
-      resInterceptors.forEach((resInterceptor) => {
-        response = resInterceptor(response);
+      resInterceptors.forEach(async (resInterceptor) => {
+        const interceptionResult = await resInterceptor(
+          response,
+          requestConfig,
+        );
+        response = interceptionResult.response;
+        requestConfig = interceptionResult.config;
       });
     }
 
