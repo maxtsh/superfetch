@@ -96,14 +96,12 @@ class SuperFetch {
       });
     }
 
-    let response = await (
-      await this.baseFetch(reqURL, {
-        ...reqConfig,
-        signal: !reqConfig?.signal
-          ? this.timeoutController().signal
-          : reqConfig.signal,
-      })
-    ).json();
+    let response = await this.baseFetch(reqURL, {
+      ...reqConfig,
+      signal: !reqConfig?.signal
+        ? this.timeoutController().signal
+        : reqConfig.signal,
+    });
 
     if (signalTimeoutId) clearTimeout(signalTimeoutId);
 
