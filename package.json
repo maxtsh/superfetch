@@ -4,9 +4,9 @@
   "author": "maxtsh",
   "version": "1.0.1",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.js",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.js",
   "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
