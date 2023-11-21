@@ -4,6 +4,7 @@ export type URLType = RequestInfo | URL;
 
 export type RequestConfig = {
   url: URLType;
+  retry?: boolean;
 } & Partial<RequestInit>;
 
 export type InterceptorRequestFn = (
