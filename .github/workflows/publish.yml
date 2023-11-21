@@ -38,7 +38,7 @@ jobs:
           version: pnpm ci:version
           commit: "chore: update versions"
           title: "chore: update versions"
-          publish: pnpm run build --no-git-checks --access=public
+          publish: pnpm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           NPM_SECRET: ${{secrets.NPM_TOKEN}}
