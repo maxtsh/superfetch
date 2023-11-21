@@ -1,7 +1,9 @@
 {
-  "name": "superfetch",
+  "name": "@maxtsh/superfetch",
+  "description": "Open source HTTP Request wrapper for node/browser native fetch API",
+  "author": "maxtsh",
   "version": "1.0.0",
-  "description": "",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.js",
@@ -23,8 +25,6 @@
     "node",
     "fetch"
   ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@changesets/cli": "^2.26.2"
   },
