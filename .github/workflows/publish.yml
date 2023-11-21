@@ -41,3 +41,4 @@ jobs:
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          NPM_SECRET: ${{secrets.NPM_TOKEN}}
