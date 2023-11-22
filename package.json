@@ -4,10 +4,17 @@
   "author": "maxtsh",
   "version": "1.0.1",
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.mjs",
-  "types": "index.d.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxtsh/superfetch.git"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "clean": "rimraf dist",
